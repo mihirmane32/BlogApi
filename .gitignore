@@ -1,0 +1,43 @@
+## .NET / Visual Studios .gitignore
+
+# Build results
+bin/
+obj/
+out/
+
+# Visual Studios files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Build logs
+*.logs
+*.binlog
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local settings / secrets (never commit these)
+appsettings.Development.json
+*.env
+secrets.json
+
+# Rider/VS crash logs
+*.dmp

@@ -1,0 +1,11 @@
+@BlogApi_HostAddress = http://localhost:5163
+
+GET {{BlogApi_HostAddress}}/posts
+
+###
+
+GET {{BlogApi_HostAddress}}/posts/1
+
+###
+
+GET {{BlogApi_HostAddress}}/posts/999
