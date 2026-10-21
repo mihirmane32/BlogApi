@@ -31,3 +31,39 @@ Content-Type: application/json
 }
 
 ###
+
+PUT {{BlogApi_HostAddress}}/posts/1
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated Content"
+}
+
+###
+
+PUT {{BlogApi_HostAddress}}/posts/999
+Content-Type: application/json
+
+{
+  "title": "Ghost",
+  "content": "Does not exist"
+}
+
+###
+
+PUT {{BlogApi_HostAddress}}/posts/1
+Content-Type: application/json
+
+{
+  "title": "",
+  "content": "Invalid update"
+}
+
+###
+
+DELETE {{BlogApi_HostAddress}}/posts/1
+
+###
+
+DELETE {{BlogApi_HostAddress}}/posts/1

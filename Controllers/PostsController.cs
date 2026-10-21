@@ -43,5 +43,22 @@ namespace BlogApi.Controllers
             var post = _postService.Add(request.Title, request.Content);
             return CreatedAtAction(nameof(GetById), new { id = post.Id }, post);
         }
+
+        [HttpPut("{id}")]
+        public ActionResult<Post> Update(int id, UpdatePostRequest request)
+        {
+            var post = _postService.Update(id, request.Title, request.Content);
+            if (post is null) return NotFound();
+
+            return Ok(post);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if (!_postService.Delete(id)) return NotFound();
+
+            return NoContent();
+        }
     }
 }
