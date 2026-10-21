@@ -9,3 +9,25 @@ GET {{BlogApi_HostAddress}}/posts/1
 ###
 
 GET {{BlogApi_HostAddress}}/posts/999
+
+###
+
+POST {{BlogApi_HostAddress}}/posts
+Content-Type: application/json
+
+{
+  "title": "My First Post",
+  "content": "Hello world"
+}
+
+###
+
+POST {{BlogApi_HostAddress}}/posts
+Content-Type: application/json
+
+{
+  "title": "",
+  "content": "No title here"
+}
+
+###
