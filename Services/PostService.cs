@@ -25,5 +25,25 @@ namespace BlogApi.Services
 
             return post;
         }
+
+        public Post? Update(int id, string title, string content)
+        {
+            var post = GetById(id);
+            if (post is null) return null;
+
+            post.Title = title;
+            post.Content = content;
+
+            return post;
+        }
+
+        public bool Delete(int id)
+        {
+            var post = GetById(id);
+            if (post is null) return false;
+
+            _posts.Remove(post);
+            return true;
+        }
     }
 }
