@@ -10,6 +10,7 @@ namespace BlogApi.Controllers
     public class PostsController : ControllerBase
     {
         private readonly PostService _postService;
+        private readonly CommentService _commentService;
 
         //private static readonly List<Post> _post = new()
         //{
@@ -17,9 +18,10 @@ namespace BlogApi.Controllers
         //    new Post { Id = 2, Title = "Second Post", Content = "More content", CreatedAt = DateTime.UtcNow}
         //};
 
-        public PostsController(PostService postService)
+        public PostsController(PostService postService, CommentService commentService)
         {
             _postService = postService;
+            _commentService = commentService;
         }
 
         [HttpGet]
@@ -58,6 +60,7 @@ namespace BlogApi.Controllers
         {
             if (!_postService.Delete(id)) return NotFound();
 
+            _commentService.DeleteByPostId(id);
             return NoContent();
         }
     }
