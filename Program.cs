@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddSingleton<PostService>();
+builder.Services.AddSingleton<CommentService>();
 
 var app = builder.Build();
 

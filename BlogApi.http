@@ -67,3 +67,37 @@ DELETE {{BlogApi_HostAddress}}/posts/1
 ###
 
 DELETE {{BlogApi_HostAddress}}/posts/1
+
+###
+
+POST {{BlogApi_HostAddress}}/posts/1/comments
+Content-Type: application/json
+
+{
+  "author": "Sam",
+  "text": "Great post!"
+}
+
+###
+
+GET {{BlogApi_HostAddress}}/posts/1/comments
+
+###
+
+POST {{BlogApi_HostAddress}}/posts/999/comments
+Content-Type: application/json
+
+{
+  "author": "Sam",
+  "text": "Commenting on nothing"
+}
+
+###
+
+POST {{BlogApi_HostAddress}}/posts/1/comments
+Content-Type: application/json
+
+{
+  "author": "",
+  "text": "No author"
+}
