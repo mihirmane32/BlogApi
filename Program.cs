@@ -1,3 +1,4 @@
+using BlogApi.Middleware;
 using BlogApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 builder.Services.AddSingleton<PostService>();
 builder.Services.AddSingleton<CommentService>();
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 

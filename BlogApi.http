@@ -101,3 +101,14 @@ Content-Type: application/json
   "author": "",
   "text": "No author"
 }
+
+###
+
+POST {{BlogApi_HostAddress}}/posts
+Content-Type: application/json
+
+{ "title": "broken json
+
+###
+
+GET {{BlogApi_HostAddress}}/posts/999

@@ -22,13 +22,14 @@ A REST API for a simple blog (posts and comments) built with ASP.NET Core (.NET 
 - Validation is declared with attributes on the DTO, and ASP.NET returns `400` automatically.
 - Comments live under their post (`/posts/{postId}/comments`) because a comment can't exist without one.
 - Deleting a post also deletes its comments, so no orphaned data is left behind.
+- Error handling lives in one place (`GlobalExceptionHandler`) instead of try/catch in every action. It logs the full exception and returns only a generic message, because stack traces expose internals.
 - Dependencies come through constructor injection, using ASP.NET's built container.
 - No secrets or connection strings are stored in the repository. Any sensitive (like a future JWT signing key) will come from user-secrets or environment variables.
 
 ## Known gaps
 
-- Posts live in memory and are lost when the app restarts.
-- Inexpected errors aren't handled consistently yet.
+- Posts and comments live in memory and are lost when the app restarts.
+- Anyone can create, edit, or delete posts (no authentication yet).
 
 ## Testing it
 
@@ -36,4 +37,4 @@ Run the project, then open `BlogApi.http` in Visual Studio and send the requests
 
 ## Status
 
-In progress. Next up: error handling, then JWT authentication.
+In progress. Next up: JWT authentication.
