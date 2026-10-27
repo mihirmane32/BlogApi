@@ -7,9 +7,13 @@ namespace BlogApi.Services
         private readonly List<Post> _posts = new();
         private int _nextId = 1;
 
+        // Returns all stored posts.
         public IReadOnlyList<Post> GetAll() => _posts;
+
+        // Finds a post by its identifier.
         public Post? GetById(int id) => _posts.FirstOrDefault(p => p.Id == id);
 
+        // Creates and stores a post with a new identifier.
         public Post Add(string title, string content)
         {
             var post = new Post
@@ -26,6 +30,7 @@ namespace BlogApi.Services
             return post;
         }
 
+        // Updates an existing post, or returns null if it is missing.
         public Post? Update(int id, string title, string content)
         {
             var post = GetById(id);
@@ -37,6 +42,7 @@ namespace BlogApi.Services
             return post;
         }
 
+        // Removes a post and reports whether it existed.
         public bool Delete(int id)
         {
             var post = GetById(id);

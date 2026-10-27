@@ -7,11 +7,13 @@ namespace BlogApi.Middleware
     {
         private readonly ILogger<GlobalExceptionHandler> _logger;
 
+        // Stores the logger used to record unhandled exceptions.
         public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
         {
             _logger = logger;
         }
 
+        // Converts unhandled exceptions into a consistent 500 response.
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
             _logger.LogError(exception, "Unhandled exception on {Method} {Path}", httpContext.Request.Method, httpContext.Request.Path);

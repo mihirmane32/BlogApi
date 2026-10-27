@@ -12,12 +12,14 @@ namespace BlogApi.Controllers
         private readonly PostService _postService;
         private readonly CommentService _commentService;
 
+        // Provides comment operations after verifying the parent post exists.
         public CommentsController(PostService postService, CommentService commentService)
         {
             _postService = postService;
             _commentService = commentService;
         }
 
+        // Returns a post's comments or 404 when the post does not exist.
         [HttpGet]
         public ActionResult<IEnumerable<Comment>> GetAll(int postId)
         {
@@ -26,6 +28,7 @@ namespace BlogApi.Controllers
             return Ok(_commentService.GetPostById(postId));
         }
 
+        // Adds a comment to an existing post.
         [HttpPost]
         public ActionResult<Comment> Create(int postId, CreateCommentRequest request)
         {
